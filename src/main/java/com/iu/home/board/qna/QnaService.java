@@ -4,10 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.home.util.Pager;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Service
+@Slf4j
 public class QnaService {
 	@Autowired
 	private QnaMapper qnaMapper;
@@ -18,7 +22,14 @@ public class QnaService {
 	}
 	
 	public int setAdd(QnaVO qnaVO)throws Exception{
-		return qnaMapper.setAdd(qnaVO);
+		
+		for(MultipartFile f : qnaVO.getFiles()) {
+			if(!f.isEmpty()) {
+				log.info("FileName : {}", f.getOriginalFilename());
+			}
+		}
+		
+		return 1;//qnaMapper.setAdd(qnaVO);
 	}
 
 }
