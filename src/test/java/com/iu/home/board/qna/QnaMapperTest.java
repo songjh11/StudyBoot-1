@@ -19,7 +19,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.iu.home.util.Pager;
 
 @SpringBootTest
-//@Rollback(true)
 @Transactional
 class QnaMapperTest {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -53,6 +52,7 @@ class QnaMapperTest {
 	}
 	
 	@Test
+	@Rollback(false)
 	void test2() throws Exception {
 		//qnaMapper.setUpdate(qnaVO);
 		//qnaMapper.setDelete(qnaVO);
