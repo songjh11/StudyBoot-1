@@ -19,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.iu.home.util.Pager;
 
-@SpringBootTest
+//@SpringBootTest
 @Transactional
 class QnaMapperTest {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -54,7 +54,7 @@ class QnaMapperTest {
 		System.out.println("Test 메서드 실행 후");
 	}
 	
-	@Test
+//	@Test
 	//@Rollback(false)
 	void test2() throws Exception {
 		//qnaMapper.setUpdate(qnaVO);
