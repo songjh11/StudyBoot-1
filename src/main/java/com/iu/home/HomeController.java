@@ -16,8 +16,10 @@ import com.iu.home.board.qna.QnaVO;
 @Controller
 public class HomeController {
 	
-	@Value("${my.message.hi}")
+//	@Value("${my.message.hi}")
 	private String message;
+	@Value("${my.default}")
+	private String app;
 	
 //	private final Logger log = LoggerFactory.getLogger(HomeController.class);
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
@@ -27,11 +29,11 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String home() throws Exception {
-		log.error("Error Message");
-		log.warn("Warn Message");
-		log.info("Info Message");
-		log.debug("Debug Message");
-		log.trace("Trace Message");
+		log.info("==========================");
+		log.info("message {} ", message);
+		log.info("default {} ", app);
+		log.info("==========================");
+
 		return "index";
 	}
 
