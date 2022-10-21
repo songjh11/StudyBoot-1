@@ -16,8 +16,8 @@
 	<img src="./images/winter.jpg" id="id1">
 	<a href="./qna/list">QNA</a>
 	<div>
-		<img alt="" src="/file/qna/75aaf265-c34f-4ed6-a881-1d152e806b18_아이유.jpg">
-		<img alt="" src="/file/notice/iu2.jpg">
+		<img alt="" src="/file/qna/01d3f9ce-a02e-49b7-b762-20c4423c41e1_puppy (2).jpg">
+		<img alt="" src="/file/notice/ced8f9dd-84f2-4abe-a29f-d9bfdf94a40a_아코_고양이와_선반_PC.png">
 		<a href="/fileDown/qna?fileNum=2">QnaDown</a>
 		<a href="/fileDown/notice?fileNum=2">NoticeDown</a>
 	</div>
