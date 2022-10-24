@@ -45,10 +45,10 @@ public class QnaService {
 		
 		
 		for(MultipartFile f : qnaVO.getFiles()) {
-			if(f.isEmpty()) {
-				log.info("------------- Exception 발생-----------");
-				throw new Exception();
-			}
+//			if(f.isEmpty()) {
+//				log.info("------------- Exception 발생-----------");
+//				throw new Exception();
+//			}
 			
 			if(!f.isEmpty()) {
 				log.info("FileName : {}", f.getOriginalFilename());
@@ -62,7 +62,7 @@ public class QnaService {
 			}
 		}
 		
-		return 0;
+		return result;
 	}
 	
 	public QnaVO getOne (QnaVO qnaVO) throws Exception {
