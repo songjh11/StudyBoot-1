@@ -26,6 +26,11 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@GetMapping("add")
+	public String setAdd()throws Exception{
+		return "board/write";
+	}
+
 	@PostMapping("add")
 	public String setAdd(QnaVO qnaVO, RedirectAttributes redirectAttributes)throws Exception{
 		
@@ -35,10 +40,6 @@ public class QnaController {
 		return "redirect:./list";
 	}
 	
-	@GetMapping("add")
-	public String setAdd()throws Exception{
-		return "board/write";
-	}
 	
 	@GetMapping("list")
 	public ModelAndView getList(Pager pager)throws Exception{
