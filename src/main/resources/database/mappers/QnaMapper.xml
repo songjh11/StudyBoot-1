@@ -20,4 +20,31 @@
 		VALUES (NULL, #{num}, #{fileName}, #{oriName})
 	</insert>
 	
+	<select id="getOne" parameterType="QnaVO" resultMap="getOneresult">
+		SELECT * 
+		FROM QNA q
+			INNER JOIN
+			QNAFILES q2 
+			ON q.num = q2.num 
+		WHERE q.NUM = #{num}
+	</select>
+	
+	<resultMap type="QnaVO" id="getOneresult">
+		<id column="NUM" property="num"/>
+			<result column="TITLE" property="title"/>
+			<result column="WRITER" property="writer"/>
+			<result column="CONTENTS" property="contents"/>
+			<result column="HIT" property="hit"/>
+			<result column="REGDATE" property="regDate"/>
+			<result column="REF" property="ref"/>
+			<result column="STEP" property="step"/>
+			<result column="DEPTH" property="depth"/>
+		<collection property="fileVOs" javaType="List" ofType="QnaFileVO">
+			<id column="FILENUM" property="fileNum"/>
+				<result column="NUM" property="num"/>
+				<result column="FILENAME" property="fileName"/>
+				<result column="ORINAME" property="oriName"/> 
+		</collection>	
+	</resultMap>
+	
 </mapper>    
