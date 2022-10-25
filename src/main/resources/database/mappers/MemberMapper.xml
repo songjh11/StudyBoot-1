@@ -3,21 +3,21 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.iu.home.board.qna.QnaMapper">
-	<select id="getList" resultType="QnaVO" parameterType="Pager">
-		SELECT * FROM QNA 
-		ORDER BY NUM DESC
-		limit #{startRow}, #{perPage}
+<mapper namespace="com.iu.home.member.MemberMapper">
+	
+	<select id="getLogin" parameterType="MemberVO" resultType="MemberVO">
+		SELECT * FROM MEMBER 
+		WHERE ID=#{id} AND PW=#{pw}
 	</select>
 	
-	<insert id="setAdd" parameterType="QnaVO" useGeneratedKeys="true" keyProperty="num">
-		insert into QNA 
-		values (#{num}, #{title}, #{writer}, #{contents}, 0, now(), 0,0,0)
+	<insert id="setJoin" parameterType="MemberVO">
+		INSERT INTO MEMBER
+		VALUES (#{id}, #{pw}, #{name}, #{email}, true)
 	</insert>
 	
-	<insert id="setFileAdd" parameterType="QnaFileVO">
-		INSERT INTO QNAFILES
-		VALUES (NULL, #{num}, #{fileName}, #{oriName})
+	<insert id="setMember" parameterType="MemberVO">
+		INSERT INTO MEMBER_ROLE
+		VALUES (#{id}, 3)
 	</insert>
 	
 	<select id="getOne" parameterType="QnaVO" resultMap="getOneresult">

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.iu.home.board.qna.QnaMapper;
 import com.iu.home.board.qna.QnaVO;
+import com.iu.home.member.MemberVO;
 
 @Controller
 public class HomeController {

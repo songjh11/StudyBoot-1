@@ -13,6 +13,18 @@
 </head>
 <body>
 	<h1>Index page</h1>
+		<div>
+			<c:if test="${not empty sessionScope.member}">
+				<p>${sessionScope.member.name} 님 환영합니다</p>
+				<a href="./member/logout"><button type="button" class="btn btn-info">Logout</button></a>
+			</c:if>
+		</div>
+		<c:if test="${empty sessionScope.member}">
+			<div>
+				<h3><a href="./member/add">Join</a></h3>
+				<h3><a href="./member/login">Login</a></h3>
+			</div>
+		</c:if>
 	<img src="./images/winter.jpg" id="id1">
 	<a href="./qna/list">QNA</a>
 	<div>
@@ -21,6 +33,7 @@
 		<a href="/fileDown/qna?fileNum=2">QnaDown</a>
 		<a href="/fileDown/notice?fileNum=2">NoticeDown</a>
 	</div>
+	
 
 
 </body>

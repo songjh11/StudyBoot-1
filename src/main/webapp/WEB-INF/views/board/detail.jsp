@@ -46,18 +46,17 @@
                </thead>
                <tbody>
                   <tr>
-                     <td style="height: 50px">
-                     
-                     <c:forEach items="${detail.fileVOs}" var="file">
-                          <img src="/file/qna/${file.fileName}" alt="" width="auto" style="cursor: pointer;" onclick="location.href='/file/qna/${file.fileName}'">
-	                      <a href="/fileDown/qna?fileNum=${file.fileNum}">${file.fileName} Down</a>
-                           <br></br>
-                           </c:forEach>
-                     
-                     ${detail.contents}
-                     
+                     <td>
+                     <h1><p>${detail.contents}</p></h1>
+                         <c:forEach items="${detail.fileVOs}" var="file">
+		                     <div style="width: 80%;">
+		                          <img src="/file/qna/${file.fileName}" alt="" style="cursor: pointer; width: 100%;" onclick="location.href='/file/qna/${file.fileName}'">
+		                     </div>
+		                     <div>
+			                      <h3><a href="/fileDown/qna?fileNum=${file.fileNum}">${file.oriName} Down</a></h3>
+		                     </div>
+                    	 </c:forEach>
                      </td>
-                     
                   </tr>
                </tbody>
             </table>
