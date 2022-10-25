@@ -1,5 +1,9 @@
 package com.iu.home.member;
 
+import java.util.List;
+
+import com.iu.home.role.RoleVO;
+
 import lombok.Data;
 
 @Data
@@ -11,4 +15,5 @@ public class MemberVO {
 	private String email;
 	private boolean enabled;
 
+	private List<RoleVO> roleVOs;
 }

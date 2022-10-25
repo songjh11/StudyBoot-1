@@ -14,17 +14,18 @@
 <body>
 	<h1>Index page</h1>
 		<div>
-			<c:if test="${not empty sessionScope.member}">
-				<p>${sessionScope.member.name} 님 환영합니다</p>
+			<c:if test="${not empty member}">
+				<p>${member.name} 님 환영합니다</p>
+				<p>${member.roleVOs[0].roleName}등급입니다</p>
 				<a href="./member/logout"><button type="button" class="btn btn-info">Logout</button></a>
 			</c:if>
+			<c:if test="${empty member}">
+				<div>
+					<h3><a href="./member/add">Join</a></h3>
+					<h3><a href="./member/login">Login</a></h3>
+				</div>
+			</c:if>
 		</div>
-		<c:if test="${empty sessionScope.member}">
-			<div>
-				<h3><a href="./member/add">Join</a></h3>
-				<h3><a href="./member/login">Login</a></h3>
-			</div>
-		</c:if>
 	<img src="./images/winter.jpg" id="id1">
 	<a href="./qna/list">QNA</a>
 	<div>

@@ -5,9 +5,16 @@
 
 <mapper namespace="com.iu.home.member.MemberMapper">
 	
-	<select id="getLogin" parameterType="MemberVO" resultType="MemberVO">
-		SELECT * FROM MEMBER 
-		WHERE ID=#{id} AND PW=#{pw}
+	<select id="getLogin" parameterType="MemberVO" resultMap="getLoginResult">
+		SELECT M.*, R.* 
+		FROM MEMBER M 
+			INNER JOIN
+			MEMBER_ROLE MR
+			ON M.ID = MR.ID
+				INNER JOIN
+				ROLE R
+				ON MR.NUM = R.NUM
+		WHERE M.ID=#{id} AND M.PW=#{pw}
 	</select>
 	
 	<insert id="setJoin" parameterType="MemberVO">
@@ -20,33 +27,19 @@
 		VALUES (#{id}, 3)
 	</insert>
 	
-	<select id="getOne" parameterType="QnaVO" resultMap="getOneresult">
-		SELECT * 
-		FROM QNA q
-			LEFT JOIN
-			QNAFILES q2 
-			ON q.num = q2.num 
-		WHERE q.NUM = #{num}
-	</select>
-	
 	<select id="getFileDetail" parameterType="QnaFileVO" resultType="QnaFileVO">
 		SELECT * FROM QNAFILES WHERE FILENUM = #{fileNum} 
 	</select>
 	
-	<resultMap type="QnaVO" id="getOneresult">
-		<id column="NUM" property="num"/>
-			<result column="TITLE" property="title"/>
-			<result column="WRITER" property="writer"/>
-			<result column="CONTENTS" property="contents"/>
-			<result column="HIT" property="hit"/>
-			<result column="REGDATE" property="regDate"/>
-			<result column="REF" property="ref"/>
-			<result column="STEP" property="step"/>
-			<result column="DEPTH" property="depth"/>
-		<collection property="fileVOs" javaType="List" ofType="QnaFileVO">
-			<id column="FILENUM" property="fileNum"/>
-				<result column="FILENAME" property="fileName"/>
-				<result column="ORINAME" property="oriName"/> 
+	<resultMap type="MemberVO" id="getLoginResult">
+		<id column="ID" property="id"/>
+			<result column="PW" property="pw"/>
+			<result column="NAME" property="name"/>
+			<result column="EMAIL" property="email"/>
+			<result column="ENABLED" property="enabled"/>
+		<collection property="roleVOs" javaType="List" ofType="RoleVO">
+			<id column="NUM" property="num"/>
+				<result column="ROLENAME" property="roleName"/>
 		</collection>	
 	</resultMap>
 	

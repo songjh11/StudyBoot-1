@@ -39,16 +39,10 @@ public class MemberController {
 	}
 	
 	@PostMapping("login")
-	public ModelAndView getLogin(MemberVO memberVO, HttpServletRequest request) throws Exception{
-		log.info("memberVO:{}", memberVO.getId());
+	public String getLogin(MemberVO memberVO, HttpSession session) throws Exception{
 		memberVO = memberService.getLogin(memberVO); 
-		log.info("memberVOemail:{}",memberVO.getEmail());
-		ModelAndView mv = new ModelAndView();
-		HttpSession session = request.getSession();
 		session.setAttribute("member", memberVO);
-		mv.addObject("VO", memberVO);
-		mv.setViewName("redirect:../");
-		return mv;
+		return "redirect:../";
 	}
 	
 	@GetMapping("logout")
