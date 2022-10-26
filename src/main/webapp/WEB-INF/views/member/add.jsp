@@ -7,32 +7,69 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-<script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<link href="/css/test.css" rel="stylesheet">
+<c:import url="../temp/boot.jsp"></c:import>
+<script defer src="/js/util.js"></script>
+<script defer src="/js/memberAdd.js"></script>
 </head>
 
 <body>
-<form action="add" method="post">
+<div class="mt-5">
+<form action="add" method="post" id="joinFrm">
 	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">ID</label>
-	  <input type="text" class="form-control" name="id" id="exampleFormControlInput1" placeholder="ID">
+	  <input type="text" class="form-control" name="id" id="id" placeholder="ID 입력">
+	  <label for="exampleFormControlInput1" class="form-label" id="inputIdResult"></label>
+	</div>
+	<div>
+		<button type="button" id="idCheckBtn" class="btn btn-info">ID 중복 Check</button>
 	</div>
 	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">PASSWORD</label>
-	  <input type="text" class="form-control" name="pw" id="exampleFormControlInput1" placeholder="PASSWORD">
+	  <input type="text" class="form-control" name="pw" id="pw" placeholder="PASSWORD 입력">
+	  <label for="exampleFormControlInput1" class="form-label" id="inputPwResult"></label>
 	</div>
 	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">PASSWORD 확인</label>
+		<input type="text" class="form-control" name="pw2" id="pw2" placeholder="PASSWORD 한번 더 입력">
+		<label for="exampleFormControlInput1" class="form-label" id="inputPw2Result"></label>
+	  </div>
+	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">NAME</label>
-	  <input type="text" class="form-control" name="name" id="exampleFormControlInput1" placeholder="NAME">
+	  <input type="text" class="form-control" name="name" id="name" placeholder="NAME 입력">
+	  <label for="exampleFormControlInput1" class="form-label" id="inputNameResult"></label>
 	</div>
 	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-	  <input type="text" class="form-control" name="email" id="exampleFormControlInput1" placeholder="name@example.com">
+	  <input type="text" class="form-control" name="email" id="email" placeholder="name@example.com">
+	  <label for="exampleFormControlInput1" class="form-label" id="inputEmailResult"></label>
 	</div>
-	<button type="submit" class="btn btn-info">Join</button>
+	<button type="button" id="joinBtn" class="btn btn-info">Join</button>
 </form>
+</div>
+<!-- 약관 test -->
+<div>
+	<div>
+		ALL <input type="checkbox" id="all">
+	</div>	
+	<div>
+		동의1 <input type="checkbox" class="check" name="" id="">
+			<div>
+				약관1
+			</div>
+	</div>
+	<div>
+		동의2 <input type="checkbox" class="check" name="" id="">
+			<div>
+				약관2
+			</div>
+	</div>
+	<div>
+		동의3 <input type="checkbox" class="check" name="" id="">
+			<div>
+				약관3
+			</div>
+	</div>
+</div>
 
 
 </body>

@@ -14,13 +14,26 @@ public class MemberService {
 	
 	public int setJoin(MemberVO memberVO) throws Exception {
 		int joinResult = memberMapper.setJoin(memberVO); 
+		
+		if(joinResult<0) {
+			throw new Exception();
+		}
+		
 		int roleResult = memberMapper.setMember(memberVO);
+		
+		if(roleResult<0) {
+			throw new Exception();
+		}
+		
 		return joinResult+roleResult;
 				
 	}
 	
 	public MemberVO getLogin(MemberVO memberVO) throws Exception{
-		memberVO = memberMapper.getLogin(memberVO);
-		return memberVO;
+		return memberMapper.getLogin(memberVO);
+	}
+	
+	public MemberVO getIdCheck(String id) throws Exception {
+		return memberMapper.getIdCheck(id);
 	}
 }

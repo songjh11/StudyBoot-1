@@ -9,10 +9,20 @@
 
 <c:import url="./temp/boot.jsp"></c:import>
 <link href="/css/test.css" rel="stylesheet">
+<script defer src="/js/test.js"></script>
 
 </head>
 <body>
 	<h1>Index page</h1>
+<div>
+	<button id="btn">CLICK</button>
+</div>
+<div>
+	<button class="buttons">BTN1</button>
+	<button class="buttons">BTN2</button>
+	<button class="buttons">BTN3</button>
+</div>
+
 		<div>
 			<c:if test="${not empty member}">
 				<p>${member.name} 님 환영합니다</p>
@@ -34,8 +44,6 @@
 		<a href="/fileDown/qna?fileNum=2">QnaDown</a>
 		<a href="/fileDown/notice?fileNum=2">NoticeDown</a>
 	</div>
-	
-
 
 </body>
 </html>

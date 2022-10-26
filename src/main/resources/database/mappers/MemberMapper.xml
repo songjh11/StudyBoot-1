@@ -31,6 +31,11 @@
 		SELECT * FROM QNAFILES WHERE FILENUM = #{fileNum} 
 	</select>
 	
+	<select id="getIdCheck" parameterType="String" resultType="MemberVO">
+		SELECT ID FROM MEMBER 
+		WHERE ID=#{id}
+	</select>
+	
 	<resultMap type="MemberVO" id="getLoginResult">
 		<id column="ID" property="id"/>
 			<result column="PW" property="pw"/>
