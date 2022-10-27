@@ -33,6 +33,14 @@
 		SELECT * FROM QNAFILES WHERE FILENUM = #{fileNum} 
 	</select>
 	
+<!-- 	<update id="setUpdate" parameterType="QnaVO">
+		UPDATE 
+	</update> -->
+	
+	<delete id="setFileDelete" parameterType="QnaFileVO">
+		DELETE FROM QNAFILES WHERE FILENUM = #{fileNum}		
+	</delete>
+	
 	<resultMap type="QnaVO" id="getOneresult">
 		<id column="NUM" property="num"/>
 			<result column="TITLE" property="title"/>

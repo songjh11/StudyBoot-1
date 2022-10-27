@@ -3,6 +3,7 @@ package com.iu.home.board.qna;
 import java.io.File;
 import java.util.List;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,13 +37,12 @@ public class QnaService {
 	public int setAdd(QnaVO qnaVO)throws Exception{
 		int result = qnaMapper.setAdd(qnaVO);
 				
+		log.info(path);
 		File file = new File(path);
 		
 		if(!file.exists()) {
 			boolean check=file.mkdirs();
-		}
-	
-		
+		}	
 		
 		for(MultipartFile f : qnaVO.getFiles()) {
 //			if(f.isEmpty()) {
@@ -71,6 +71,16 @@ public class QnaService {
 	
 	public QnaFileVO getFileDetail(QnaFileVO fileVO) throws Exception{
 		return qnaMapper.getFileDetail(fileVO);
+	}
+	
+	public int setFileDelete(QnaFileVO fileVO) throws Exception{
+		int result = qnaMapper.setFileDelete(fileVO);
+			if(result>0) {
+				result = fileManager.setFileDelete(path, fileVO.getFileName());
+				return result;
+				} else {
+					return result; 
+				}
 	}
 
 }

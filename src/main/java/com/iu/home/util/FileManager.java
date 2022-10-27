@@ -96,7 +96,16 @@ public class FileManager extends AbstractView {
 		multipartFile.transferTo(file);
 		
 		return fileName;
-		
+	}
+	
+	public int setFileDelete(String path, String fileName) throws Exception {
+		File file = new File(path, fileName);
+		boolean check = file.delete();
+		if(check) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 
 }

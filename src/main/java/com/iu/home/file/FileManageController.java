@@ -42,5 +42,9 @@ public class FileManageController {
 		return mv;
 	}
 	
+	public void setFileDelete(String path, QnaFileVO qnaFileVO) throws Exception {
+		
+	}
+	
 
 }

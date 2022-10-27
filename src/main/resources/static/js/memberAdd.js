@@ -21,7 +21,6 @@ $(".check").click(function(){
         let ch = $(item).prop("checked")
             if(!ch){
                 $("#all").prop("checked", false);
-                console.log();
                 return false;
             } 
     });

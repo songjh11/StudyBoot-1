@@ -2,6 +2,8 @@ package com.iu.home.board.qna;
 
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -58,6 +61,24 @@ public class QnaController {
 		mv.addObject("detail", qnaVO);
 		mv.setViewName("board/detail");
 		return mv;
+	}
+	
+	@GetMapping("update")
+	public ModelAndView setUpdateP(QnaVO qnaVO) throws Exception {
+		log.info("QnaVO:{}", qnaVO.getNum());
+		qnaVO = qnaService.getOne(qnaVO);
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("update", qnaVO);
+		mv.setViewName("board/update");
+		return mv;
+	}
+	
+	@PostMapping("fileDelete")
+	@ResponseBody
+	public int setFileDelete(QnaFileVO qnaFileVO) throws Exception {
+		qnaFileVO = qnaService.getFileDetail(qnaFileVO);
+		int result = qnaService.setFileDelete(qnaFileVO);
+		return result;
 	}
 
 	

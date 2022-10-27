@@ -62,7 +62,7 @@
             </table>
             
             <div>
-               <a href="./add" class="btn btn-danger">수정</a>
+               <a href="./update?num=${detail.num}" class="btn btn-danger">수정</a>
                <a href="./add" class="btn btn-danger">삭제</a>
                
             </div>
