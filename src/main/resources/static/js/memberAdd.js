@@ -33,34 +33,50 @@ let results = [false, false, false, false, false];
 
 // ID check
 $("#id").blur(function(){
+    let id = $("#id").val();
     let result = nullcheck($("#id").val(), "#inputIdResult", "ID");
     results[0] = result;
+    
+    //단 id가 비어있지 않을때 사용
+    
+    $.get("./idCheck?id="+id, function(data){
+        console.log(data);
+        if(data=='0'){
+            $("#inputIdResult").text("사용 가능한 ID입니다")
+            results[0] = true;
+        }else{
+            $("#id").val("");
+            $("#inputIdResult").text("이미 사용중인 ID입니다")
+            results[0] = false;
+        }
+    })
 }); 
 
+let idv = "";
+
 $("#idCheckBtn").click(function(){
-    let idv = "";
-    console.log($("#id").prop("value"));
-    idv = $("#id").prop("value"); 
-    //     $.ajax({
-    //         url: "./idcheck", 
-    //         type: "GET",
-    //         data: {
-    //             'id': idv
-    //         }
-    //     ,
-    //         success: function(result){
-    //             let result = result;
-    //             if(result==0){
-    //                 console.log("중복ㄴㄴ");
-    //             }
-    //         }, 
-    //         error: function(result){
-    //             let result = result;
-    //             if(result==1){
-    //                 console.log("중복");
-    //             }
-    //         }
-    //  });
+    idv = $("#id").val();
+    let result = null;
+        $.ajax({
+            url: "./idcheck", 
+            type: "GET",
+            data: {
+                'id': idv
+            }
+        ,
+            success: function(data){
+                result = data;
+                if(result==0){
+                    console.log("중복ㄴㄴ");
+                }
+            }, 
+            error: function(data){
+                result = data;
+                if(result==1){
+                    console.log("중복");
+                }
+            }
+     });
 });
 
 // PW check

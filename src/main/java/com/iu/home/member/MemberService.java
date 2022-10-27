@@ -33,7 +33,7 @@ public class MemberService {
 		return memberMapper.getLogin(memberVO);
 	}
 	
-	public MemberVO getIdCheck(String id) throws Exception {
-		return memberMapper.getIdCheck(id);
+	public Integer getIdCheck(MemberVO memberVO) throws Exception {
+		return memberMapper.getIdCheck(memberVO);
 	}
 }

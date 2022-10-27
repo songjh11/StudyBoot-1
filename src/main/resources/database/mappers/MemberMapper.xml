@@ -31,8 +31,8 @@
 		SELECT * FROM QNAFILES WHERE FILENUM = #{fileNum} 
 	</select>
 	
-	<select id="getIdCheck" parameterType="String" resultType="MemberVO">
-		SELECT ID FROM MEMBER 
+	<select id="getIdCheck" parameterType="MemberVO" resultType="Integer">
+		SELECT COUNT(ID) FROM MEMBER 
 		WHERE ID=#{id}
 	</select>
 	

@@ -55,15 +55,8 @@ public class MemberController {
 	
 	@GetMapping("idCheck")
 	@ResponseBody
-	public int getIdCheck(String id) throws Exception {
-		int result = 1;
-		MemberVO memberVO = new MemberVO();
-		memberVO = memberService.getIdCheck(id);
-		if(memberVO.getId().equals(null)) {
-			result = 0;
-		} else {
-			result = 1;
-		}
-		return result;
+	public int getIdCheck(MemberVO memberVO) throws Exception {
+		
+		return memberService.getIdCheck(memberVO);
 	}
 }
