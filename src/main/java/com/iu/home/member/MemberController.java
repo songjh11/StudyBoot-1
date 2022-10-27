@@ -56,7 +56,24 @@ public class MemberController {
 	@GetMapping("idCheck")
 	@ResponseBody
 	public int getIdCheck(MemberVO memberVO) throws Exception {
-		
-		return memberService.getIdCheck(memberVO);
+		int result = memberService.getIdCheck(memberVO);
+		if(result==0) {
+			throw new Exception();
+		}
+		return result;
 	}
+	
+	@PostMapping("test")
+	@ResponseBody
+	public MemberVO setTest(MemberVO memberVO, String [] ar) throws Exception {
+		log.info("=================================================");
+		log.info("ID: {}", memberVO.getId());
+		log.info("NAME:{}", memberVO.getName());
+		for(String a: ar) {
+			log.info("ar : {}", a);			
+		}
+		
+		return memberVO;
+	}
+	
 }

@@ -21,7 +21,7 @@
 	  <label for="exampleFormControlInput1" class="form-label" id="inputIdResult"></label>
 	</div>
 	<div>
-		<button type="button" id="idCheckBtn" class="btn btn-info">ID 중복 Check</button>
+		<a ><button type="button" id="idCheckBtn" class="btn btn-info">ID 중복 Check</button>
 	</div>
 	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">PASSWORD</label>
@@ -46,6 +46,14 @@
 	<button type="button" id="joinBtn" class="btn btn-info">Join</button>
 </form>
 </div>
+
+<!-- post button -->
+<div>
+	<button type="button" id="test" class="btn btn-info">Post Test</button>
+	<button type="button" id="test2" class="btn btn-info">Ajax Get Test</button>
+	<button type="button" id="test3" class="btn btn-info">Ajax Post Test</button>
+</div>
+
 <!-- 약관 test -->
 <div>
 	<div>
@@ -71,6 +79,13 @@
 	</div>
 </div>
 
+<div>
+	<select id="s1">
+		<option>1</option>
+		<option>2</option>
+	</select>
+	<button type="button" id="s1Add">Add</button>
+</div>
 
 </body>
 </html>

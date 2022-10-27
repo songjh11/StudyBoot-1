@@ -146,3 +146,80 @@ $("#joinBtn").click(function(){
     //     $("#joinFrm").submit();
     // }
 });
+
+$("#test").click(function(){
+    let id="123";
+    let name = "iu";
+    $.post("test", {
+        id:id, 
+        name:name
+    }, function(result){
+        console.log("Result: ", result);
+        console.log("Name: ", result.name);
+        // JSON으로 안 올 때는 아래처럼 처리하고 진행
+        // result = JSON.parse(result);
+    });
+})
+
+$("#test2").click(function(){
+    let id="";
+    $.ajax({
+        type: "GET",
+        url: "idCheck",
+        data: {
+            id:id
+        },
+        success: function(data){
+            if(data==0){
+                console.log("success: ",data);
+            } else{
+                console.log("fail: ",data);
+            }
+        },
+        error: function(xhr, status, error){
+            console.log("xhr: ",xhr);
+            console.log("status: ",status);
+            console.log("error: ",error);
+        }
+
+    }
+    )
+})
+
+$("#test3").click(function(){
+    let id="123";
+    let name = "iu";
+    let ar = [1,2,3];
+    $.ajax({
+        type: "POST",
+        url: "test",
+        traditional: true,
+        data: {
+            id:id,
+            name:name,
+            ar:ar
+        },
+        success: function(data){
+            console.log("success: ",data);
+        },
+        error: function(xhr, status, error){
+            console.log("xhr: ",xhr);
+            console.log("status: ",status);
+            console.log("error: ",error);
+        }
+    }
+    )
+});
+
+let count =3;
+$("#s1Add").click(function(){
+    // let add = '<option class="abc" id="abc'+count+'">'+count+'</option>';
+    // $("#s1").append(add);
+    // count++;
+
+    $("#s1Add").remove();
+});
+
+$("#s1").click(function(){
+    $("#s1").empty();
+});
