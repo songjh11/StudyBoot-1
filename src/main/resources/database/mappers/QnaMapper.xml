@@ -33,9 +33,9 @@
 		SELECT * FROM QNAFILES WHERE FILENUM = #{fileNum} 
 	</select>
 	
-<!-- 	<update id="setUpdate" parameterType="QnaVO">
-		UPDATE 
-	</update> -->
+	<update id="setUpdate" parameterType="QnaVO">
+		UPDATE QNA SET TITLE=#{title} , WRITER=#{writer} , CONTENTS=#{contents} WHERE NUM=#{num} 
+	</update> 
 	
 	<delete id="setFileDelete" parameterType="QnaFileVO">
 		DELETE FROM QNAFILES WHERE FILENUM = #{fileNum}		

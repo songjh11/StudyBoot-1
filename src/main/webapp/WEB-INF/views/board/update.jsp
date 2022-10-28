@@ -9,7 +9,6 @@
 </head>
 <c:import url="../temp/boot.jsp"></c:import>
 <c:import url="../temp/summer.jsp"></c:import>
-<script defer src="/js/fileManager.js"></script>
 <script defer src="/js/update.js"></script>
 <body>
 	
@@ -32,7 +31,7 @@
 			  <textarea class="form-control" name="contents" id="contents"></textarea>
 			</div>
 
-			<div class="mb-3" id="fileArea">
+			<div class="mb-3" id="fileArea" data-file-size="${update.fileVOs.size()}">
 				<c:forEach items="${update.fileVOs}" var="file">
 				<div>
 					<p>${file.oriName}</p>
@@ -59,6 +58,10 @@
 	   });
 
 	$('#contents').summernote('code','${update.contents}');   
+
+
+
+
 	</script>
 
 </body>

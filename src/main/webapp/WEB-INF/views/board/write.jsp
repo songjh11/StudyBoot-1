@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,39 +17,45 @@
 	<div class="row justify-content-center">
 		<div class="col-6">
 		<h1>Board Write Page</h1>
-		<form action="add" method="post" enctype="multipart/form-data">
-			<div class="mb-3">
-			  <label for="title" class="form-label">Titlea</label>
-			  	<input type="text" name="title" class="form-control" id="title" placeholder="제목">
-			</div>
-			<div class="mb-3">
-			  <label for="writer" class="form-label">Writer</label>
-			  	<input type="text" name="writer" class="form-control" id="writer" placeholder="작성자">
-			</div>
-			<div class="mb-3">
-			  <label for="contents" class="form-label">Contents</label>
-			  <textarea class="form-control" name="contents" id="contents"></textarea>
-			</div>
-
-			<div class="mb-3" id="fileArea">
-			</div>
-			<div class="mb-3">
-				<button type="button" id="fileAdd">FileAdd</button>
-			</div>
-			
-			<!-- <div class="mb-3">
-			  <label for="contents" class="form-label">File</label>
-			  <input type="file" name="files">
-			</div>
-			<div class="mb-3">
-			  <label for="contents" class="form-label">File</label>
-			  <input type="file" name="files">
-			</div> -->
-			
-			<div>
-				<button class="btn btn-danger">WRITE</button>
-			</div>
-		</form>
+		<form:form modelAttribute="qnaVO" method="POST" enctype="multipart/form-data">
+			<form action="add" method="post" enctype="multipart/form-data">
+				<div class="mb-3">
+				<form:input path="title" cssClass="form-control" id="title"/>
+					<form:errors path="title"></form:errors>
+					 	<div id="titleResult"></div>
+				</div>
+				<div class="mb-3">
+				  <label for="writer" class="form-label">Writer</label>
+				  <form:input path="writer" cssClass="form-control" id="writer"/>
+					<form:errors path="writer"></form:errors>
+					 	<div id="writerResult"></div>
+				</div>
+				<div class="mb-3">
+				  <label for="contents" class="form-label">Contents</label>
+				  <form:textarea path="contents" cssClass="form-control" id="contents"/>
+					<form:errors path="contents"></form:errors>
+					 	<div id="contentsResult"></div>
+				</div>
+				<div class="mb-3" id="fileArea">
+				</div>
+				<div class="mb-3">
+					<button type="button" id="fileAdd">FileAdd</button>
+				</div>
+				
+				<!-- <div class="mb-3">
+				  <label for="contents" class="form-label">File</label>
+				  <input type="file" name="files">
+				</div>
+				<div class="mb-3">
+				  <label for="contents" class="form-label">File</label>
+				  <input type="file" name="files">
+				</div> -->
+				
+				<div>
+					<button type="submit" class="btn btn-danger">WRITE</button>
+				</div>
+			</form>
+		</form:form>
 		</div>
 	</div>
 	</div>

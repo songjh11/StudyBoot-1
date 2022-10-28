@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,63 +10,42 @@
 
 <c:import url="../temp/boot.jsp"></c:import>
 <script defer src="/js/util.js"></script>
-<!-- <script defer src="/js/memberAdd.js"></script> -->
+<script defer src="/js/memberAdd.js"></script>
 </head>
 
 <body>
 <div class="mt-5">
-<form:form modelAttribute="memberVO" method="post">
 <form action="add" method="post" id="joinFrm">
 	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">ID</label>
-	  <form:input path="id" cssClass="form-control" id="id"/>
-	  <form:errors path="id"></form:errors>
-	  <div id="inputIdResult"></div>
+	  <input type="text" class="form-control" name="id" id="id" placeholder="ID 입력">
+	  <label for="exampleFormControlInput1" class="form-label" id="inputIdResult"></label>
 	</div>
 	<div>
-		<button type="button" id="idCheckBtn" class="btn btn-info">ID 중복 Check</button>
+		<a ><button type="button" id="idCheckBtn" class="btn btn-info">ID 중복 Check</button>
 	</div>
 	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">PASSWORD</label>
-	  <form:password path="pw" cssClass="form-control" id="pw"/>
-	  <form:errors path="pw"></form:errors>
-	  <div id="inputPwResult"></div>
+	  <input type="text" class="form-control" name="pw" id="pw" placeholder="PASSWORD 입력">
+	  <label for="exampleFormControlInput1" class="form-label" id="inputPwResult"></label>
 	</div>
 	<div class="mb-3">
 		<label for="exampleFormControlInput1" class="form-label">PASSWORD 확인</label>
-		<form:password path="pw2" cssClass="form-control" id="pw2"/>
-		<form:errors path="pw2"></form:errors>
-		<div id="inputPw2Result"></div>
+		<input type="text" class="form-control" name="pw2" id="pw2" placeholder="PASSWORD 한번 더 입력">
+		<label for="exampleFormControlInput1" class="form-label" id="inputPw2Result"></label>
 	  </div>
 	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">NAME</label>
-	  <form:input path="name" cssClass="form-control" id="name"/>
-	  <form:errors path="name"></form:errors>
-	  <div id="inputNameResult"></div>
+	  <input type="text" class="form-control" name="name" id="name" placeholder="NAME 입력">
+	  <label for="exampleFormControlInput1" class="form-label" id="inputNameResult"></label>
 	</div>
 	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-	   <form:input path="email" cssClass="form-control" id="email"/>
-	   <form:errors path="email"></form:errors>
-	   <div id="inputEmailResult"></div>
+	  <input type="text" class="form-control" name="email" id="email" placeholder="name@example.com">
+	  <label for="exampleFormControlInput1" class="form-label" id="inputEmailResult"></label>
 	</div>
-	<div class="mb-3">
-	  <label for="exampleFormControlInput1" class="form-label">Age</label>
-	   <form:input path="age" cssClass="form-control" id="age"/>
-	   <form:errors path="age"></form:errors>
-	   <div id="inputAgeResult"></div>
-	</div>
-	<div class="mb-3">
-	  <label for="exampleFormControlInput1" class="form-label">Birth</label>
-	   <form:input path="birth" cssClass="form-control" id="birth"/>
-	   <form:errors path="birth"></form:errors>
-	   <div id="inputBirthResult"></div>
-	</div>
-	<div>
-		<button type="submit" id="joinBtn" class="btn btn-info">Join</button>
-	</div>
+	<button type="button" id="joinBtn" class="btn btn-info">Join</button>
 </form>
-</form:form>
 </div>
 
 <!-- post button -->

@@ -5,12 +5,15 @@ import java.util.List;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,6 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.iu.home.util.Pager;
+
+import lombok.val;
 
 @Controller
 @RequestMapping("/qna/*")
@@ -30,17 +35,22 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	@GetMapping("add")
-	public String setAdd()throws Exception{
+	public String setAdd(@ModelAttribute QnaVO qnaVO)throws Exception{
+		
 		return "board/write";
 	}
 
 	@PostMapping("add")
-	public String setAdd(QnaVO qnaVO, RedirectAttributes redirectAttributes)throws Exception{
+	public ModelAndView setAdd(ModelAndView mv, @Valid QnaVO qnaVO, BindingResult bindingResult, RedirectAttributes redirectAttributes)throws Exception{
+		if(bindingResult.hasErrors()) {
+			mv.setViewName("board/write");
+			return mv;
+		}
 		
 		int result = qnaService.setAdd(qnaVO);
 		redirectAttributes.addAttribute("result", result);
-		
-		return "redirect:./list";
+		mv.setViewName("redirect:./list");
+		return mv;
 	}
 	
 	

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 
 import com.iu.home.interceptors.StudyInterceptor;
 import com.iu.home.interceptors.TestInterceptor;
@@ -20,6 +21,9 @@ public class InterceptorConfig implements WebMvcConfigurer {
 	@Autowired 
 	private StudyInterceptor studyInterceptor;
 	
+	@Autowired
+	private LocaleChangeInterceptor changeInterceptor;
+	
 	@Override
 		public void addInterceptors(InterceptorRegistry registry) {
 			//method chaining: 메서드를 끊지 않고 연결하는 방식
@@ -32,10 +36,12 @@ public class InterceptorConfig implements WebMvcConfigurer {
 					.excludePathPatterns("/qna/detail")
 					.excludePathPatterns("/qna/add");
 			
+			//추가 Interceptor 등록
 			registry.addInterceptor(studyInterceptor)
 					.addPathPatterns("/qna/**");
-		
-			//WebMvcConfigurer.super.addInterceptors(registry);
+			//message Interceptor 등록
+			registry.addInterceptor(changeInterceptor)
+					.addPathPatterns("/**");
 		}
 	
 }

@@ -2,10 +2,13 @@ package com.iu.home.member;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,16 +25,23 @@ public class MemberController {
 	private MemberService memberService; 
 
 	@GetMapping("add")
-	public String readyJoin() {
+	public String readyJoin(@ModelAttribute MemberVO memberVO) throws Exception {
+		//MemberVO memberVO = new MemberVO();
+		//model.addAttribute("vo",memberVO);
 		return "member/add";
 	}
 	
 	@PostMapping("add")
-	public String setJoin(MemberVO memberVO, RedirectAttributes redirectAttributes) throws Exception {
-		log.info("membervo:{}", memberVO);
-		int result = memberService.setJoin(memberVO); 
-		redirectAttributes.addAttribute("result", result);
-		return "redirect:./login";
+	public ModelAndView setJoin(ModelAndView mv, @Valid MemberVO memberVO, BindingResult bindingResult) throws Exception {
+		if(bindingResult.hasErrors()) {
+			log.info("============검증 에러 발생===============");
+			//검증 실패하면 회원 가입하는 jsp로 이동
+			mv.setViewName("member/add");
+			return mv;
+		}
+//		int result = memberService.setJoin(memberVO); 
+		mv.setViewName("redirect:./login");
+		return mv;
 	}
 	
 	@GetMapping("login")
