@@ -10,7 +10,7 @@
 
 <c:import url="../temp/boot.jsp"></c:import>
 <script defer src="/js/util.js"></script>
-<!-- <script defer src="/js/memberAdd.js"></script> -->
+<script defer src="/js/memberAdd.js"></script>
 </head>
 
 <body>
@@ -41,8 +41,9 @@
 	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">NAME</label>
 	  <form:input path="name" cssClass="form-control" id="name"/>
-	  <form:errors path="name"></form:errors>
-	  <div id="inputNameResult"></div>
+	  <div id="inputNameResult">
+	  	<form:errors path="name"></form:errors>
+	  </div>
 	</div>
 	<div class="mb-3">
 	  <label for="exampleFormControlInput1" class="form-label">Email address</label>
